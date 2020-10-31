@@ -1,0 +1,66 @@
+{% extends 'web/base.html' %}
+{% load mathfilters %}
+{% block extension %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'web/css/bootstrap.min.css' %}">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
+    <!--    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,700i,900,900i&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='{% static "web/css/base.css" %}'/>
+
+{% endblock %}
+{% block body %}
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="{% static 'web/images/logo.jpg' %}" width="250px" height="250px" alt="">
+                </div>
+                <div class="col-md-9 mt-lg-5">
+                    <h3 style="color:#796AEE" class="text-uppercase text-center font-weight-bold">
+                        Xây dựng hệ thống khuyến nghị môn học dựa trên nội dung (Content)
+                    </h3>
+                    <h3 style="color:#796AEE" class="text-center text-uppercase font-weight-bold">Recommender
+                        system</h3>
+                </div>
+            </div>
+            <div class="container mt-lg-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <form action="">
+                            <div class="form-group">
+                                <label for="algorithm">Giải thuật:</label>
+                                <input class="form-control font-weight-bold" type="text" disabled value="Dựa trên nội dung - Content Based" id="algorithm">
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="col-md-6">
+                        <form action="">
+                            <div class="form-group">
+                                <label for="data">Mẫu dữ liệu:</label>
+                                <input class="form-control font-weight-bold" type="text" disabled value="Dùng 3 năm đầu để dự đoán năm cuối" id="data" >
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-lg-5">
+                <div class="col-md-6">
+                    <a class="btn btn-info btn-lg btn-block text-uppercase" href="{% url 'predictAll' %}">Xem một phần
+                        kết quả dự đoán</a>
+                </div>
+                <div class="col-md-6">
+                    <a class="btn btn-info btn-lg btn-block text-uppercase" href="{% url 'list_first' %}">Gợi ý cho một sinh viên</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% if messages %}
+        <div class="alert alert-success text-center" role="alert">
+            {% for message in messages %}
+                <strong>{{ message }}</strong>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
